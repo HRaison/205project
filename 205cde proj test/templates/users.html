@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>Users</title>
+
+<style>
+  body :not(nav):not(footer) {
+    box-sizing: border-box;
+    margin: 5px;
+  }
+</style>
+{% endblock %}
+{% block body %}
+<legend>Account Info</legend><br>
+<table border="1" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">User_id</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  {% for result in results %}
+
+
+  <tr>
+    <td>{{result[0]}}</td>
+    <td>{{result[1]}}</td>
+    <td>{{result[2]}}</td>
+    <td>{{result[3]}}</td>
+    <td><a href="/edit_account/{{result[0]}}" class="btn btn-primary">Edit</a></td>
+    <td>
+      <form action="{{url_for('delete_account', id=result[0])}}" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete" class="btn btn-danger">
+      </form>
+    </td>
+
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

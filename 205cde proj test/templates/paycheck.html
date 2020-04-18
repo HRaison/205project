@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>Users</title>
+<style>
+  body :not(nav):not(footer) {
+    box-sizing: border-box;
+    margin: 5px;
+  }
+</style>
+{% endblock %}
+{% block body %}
+<table border="1" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Payment_ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Card Type</th>
+      <th scope="col">Card number</th>
+      <th scope="col">Expiry Month</th>
+      <th scope="col">Expiry Year</th>
+      <th scope="col">CVV</th>
+      <th scope="col">Money</th>
+      <th scope="col">Animal</th>
+    </tr>
+  </thead>
+  {% for result in results %}
+
+
+  <tr>
+    <td>{{result[0]}}</td>
+    <td>{{result[1]}}</td>
+    <td>{{result[2]}}</td>
+    <td>{{result[3]}}</td>
+    <td>{{result[4]}}</td>
+    <td>{{result[5]}}</td>
+    <td>{{result[6]}}</td>
+    <td>{{result[7]}}</td>
+    <td>{{result[8]}}</td>
+    <td>{{result[9]}}</td>
+
+
+
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

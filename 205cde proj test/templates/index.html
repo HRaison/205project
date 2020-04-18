@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body :not(nav):not(footer) {
+      box-sizing: border-box;
+      margin: 5px;
+    }
+
+    body {
+      background-color: rgba(246, 200, 37, 0.36);
+    }
+
+    h3 {
+      font-family: cursive;
+      color: rgb(73, 157, 193);
+    }
+
+  </style>
+</head>
+
+<body>
+  {% include 'navbar2.html' %}
+  {% block body %}{% endblock %}
+  <h3 align="center" class = "jumbotron">This are the poor animals. please help..</h3>
+  <marquee direction="right" scrollamount="10">Please help these animals</marquee>
+  <div class="container">
+    {% include 'photos.html' %}
+  </div>
+
+  <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; Animal Rescue</small>
+    </div>
+  </footer>
+
+</body>
+
+</html>

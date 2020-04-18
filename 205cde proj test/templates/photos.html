@@ -1,0 +1,260 @@
+{% block content %}
+<style>
+  div.card {
+    display: inline-block;
+  }
+
+  p {
+    text-allign: center;
+  }
+
+  .card img {
+    object-fit: cover;
+    width: 97%;
+  }
+
+  div.card p,
+  h4 {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .other p {
+    color: rgb(135, 24, 31);
+    font-size: 20px;
+  }
+</style>
+<br>
+<br>
+<!--cards-->
+<div class="card-deck">
+  <div class="card" style="width:400px">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/cat3.jpg')}}" alt="Doe">
+    <div class="card-body">
+      <h4 class="card-title">Doe</h4>
+      <p class="card-text">Doe is a cat who has been suffering from diabetes for three months. She has lost weight from 3kg to 2.5kg in this period. She needs around $9000 for its healing process.</p>
+      <a href="/paymentverify" class="btn btn-primary">Donate Now</a>
+    </div>
+  </div>
+  <div class="card" style="width:400px">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/cat2.jpg')}}" alt="SoSo">
+    <div class="card-body">
+      <h4 class="card-title">Soso</h4>
+      <p class="card-text">Soso is a cat who has been suffering from arthritis for two weeks. This disease restricts it in jumping and running. She needs $1000 for its physical therapy.</p>
+      <a href="/paymentverify" class="btn btn-primary">Donate Now</a>
+    </div>
+  </div>
+  <div class="card" style="width:400px">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/cat5.jpg')}}" alt="QQ">
+    <div class="card-body">
+      <h4 class="card-title">QQ</h4>
+      <p class="card-text">QQ is a cat who has been suffering lymphoma for two months. Chemotherapy has been taken on him to extend his life and the costs of the medicine is around $800 per month.</p>
+      <a href="/paymentverify" class="btn btn-primary">Donate Now</a>
+    </div>
+  </div>
+</div>
+
+<div class="card-deck">
+  <div class="card" style="width:400px">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/cat1.jpg')}}" alt="Judy">
+    <div class="card-body">
+      <h4 class="card-title">Judy</h4>
+      <p class="card-text">Judy is a cat who is suffering from Feline Immunodeficiency Virus (FIV). Her immune system has been weakened and various secondary infections may occur. Medical care is needed and it costs around $300 per month.</p>
+      <a href="/paymentverify" class="btn btn-primary">Donate Now</a>
+    </div>
+  </div>
+  <div class="card" style="width:400px">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/dog1.jpg')}}" alt="Rex">
+    <div class="card-body">
+      <h4 class="card-title">Rex</h4>
+      <p class="card-text">Rex is now suffering from parvovirus. It is a serious disease to dogs hence it is urgent to deworm him and expensive medical treatments has to be taken on him for a long period of time.</p>
+      <a href="/paymentverify" class="btn btn-primary">Donate Now</a>
+    </div>
+  </div>
+  <div class="card" style="width:400px">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/dog2.jpg')}}" alt="GT">
+    <div class="card-body">
+      <h4 class="card-title">GT</h4>
+      <p class="card-text">GT hurt his leg last week. Physical therapy has to be taken on him and it needs $1000 for the follow-up treatments.</p>
+      <a href="/paymentverify" class="btn btn-primary">Donate Now</a>
+    </div>
+  </div>
+</div>
+<br>
+<center>
+  <h3>Can't decide? Let's random!</h3>
+</center>
+<center>
+  <div class="randomimage">
+    <img id="cat3" src="{{ url_for('static', filename='images/cat3.jpg')}}" width="400" height="235" style="display:none">
+    <img id="cat2" src="{{ url_for('static', filename='images/cat2.jpg')}}" width="400" height="235" style="display:none">
+    <img id="cat5" src="{{ url_for('static', filename='images/cat5.jpg')}}" width="400" height="235" style="display:none">
+    <img id="cat1" src="{{ url_for('static', filename='images/cat1.jpg')}}" width="400" height="235" style="display:none">
+    <img id="dog1" src="{{ url_for('static', filename='images/dog1.jpg')}}" width="400" height="235" style="display:none">
+    <img id="dog2" src="{{ url_for('static', filename='images/dog2.jpg')}}" width="400" height="235" style="display:none">
+    <br>
+    <p id="pcat3" style="display:none">Doe is the chosen one. Please help her!</p>
+    <p id="pcat2" style="display:none">SoSo is the chosen one. Please help her!</p>
+    <p id="pcat5" style="display:none">QQ is the chosen one. Please help him!</p>
+    <p id="pcat1" style="display:none">Judy is the chosen one. Please help her!</p>
+    <p id="pdog1" style="display:none">Rex is the chosen one. Please help him!</p>
+    <p id="pdog2" style="display:none">GT is the chosen one. Please help him!</p>
+    <button id="final" class="btn btn-info" onclick="callResult()">Pick</button>
+
+
+  </div>
+</center>
+<div class="other">
+
+  <p>In order to help more animals or see how the donation can help the animals, you can click the button below for the details.</p>
+  <button class="btn btn-primary" onclick="openWindow()">SPCA donation page</button>
+  <br>
+  <br>
+</div>
+
+
+<script type="text/javascript">
+  var top_part = screen.height - 550;
+  var left_part = screen.width - 420;
+
+//pop up a small window
+  function openWindow() {
+    window.open("https://www.spca.org.hk/en/join-us/make-a-donation", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=" + top_part + ",left=" + left_part + ",width=420,height=550");
+  }
+
+//random choice
+  function compRoll() {
+    var compChoice = Math.floor(Math.random() * 6) + 1;
+    if (compChoice == 1) {
+      compChoice = "choice1";
+    } else if (compChoice == 2) {
+      compChoice = "choice2";
+    } else if (compChoice == 3) {
+      compChoice = "choice3";
+    } else if (compChoice == 4) {
+      compChoice = "choice4";
+    } else if (compChoice == 5) {
+      compChoice = "choice5";
+    } else {
+      compChoice = "choice6";
+    }
+
+    return compChoice;
+  }
+
+  function callResult() {
+    cRoll = compRoll()
+
+    if (cRoll == "choice1") {
+      show1();
+    } else if (cRoll == "choice2") {
+      show2();
+    } else if (cRoll == "choice3") {
+      show3();
+    } else if (cRoll == "choice4") {
+      show4();
+    } else if (cRoll == "choice5") {
+      show5();
+    } else {
+      show6();
+    }
+  }
+
+  function show4() {
+    document.getElementById('cat1').style.display = 'block';
+    document.getElementById('pcat1').style.display = 'block';
+    document.getElementById('cat3').style.display = 'none';
+    document.getElementById('cat2').style.display = 'none';
+    document.getElementById('cat5').style.display = 'none';
+    document.getElementById('dog1').style.display = 'none';
+    document.getElementById('dog2').style.display = 'none';
+    document.getElementById('pcat3').style.display = 'none';
+    document.getElementById('pcat2').style.display = 'none';
+    document.getElementById('pcat5').style.display = 'none';
+    document.getElementById('pdog1').style.display = 'none';
+    document.getElementById('pdog2').style.display = 'none';
+  }
+
+  function show1() {
+
+    document.getElementById('dog1').style.display = 'block';
+    document.getElementById('pdog1').style.display = 'block';
+    document.getElementById('cat3').style.display = 'none';
+    document.getElementById('cat2').style.display = 'none';
+    document.getElementById('cat5').style.display = 'none';
+    document.getElementById('cat1').style.display = 'none';
+    document.getElementById('dog2').style.display = 'none';
+    document.getElementById('pcat3').style.display = 'none';
+    document.getElementById('pcat2').style.display = 'none';
+    document.getElementById('pcat5').style.display = 'none';
+    document.getElementById('pcat1').style.display = 'none';
+    document.getElementById('pdog2').style.display = 'none';
+
+  }
+
+  function show6() {
+
+    document.getElementById('dog2').style.display = 'block';
+    document.getElementById('pdog2').style.display = 'block';
+    document.getElementById('cat3').style.display = 'none';
+    document.getElementById('cat2').style.display = 'none';
+    document.getElementById('cat5').style.display = 'none';
+    document.getElementById('dog1').style.display = 'none';
+    document.getElementById('cat1').style.display = 'none';
+    document.getElementById('pcat3').style.display = 'none';
+    document.getElementById('pcat2').style.display = 'none';
+    document.getElementById('pcat5').style.display = 'none';
+    document.getElementById('pdog1').style.display = 'none';
+    document.getElementById('pcat1').style.display = 'none';
+  }
+
+  function show5() {
+
+    document.getElementById('cat5').style.display = 'block';
+    document.getElementById('pcat5').style.display = 'block';
+    document.getElementById('cat3').style.display = 'none';
+    document.getElementById('cat2').style.display = 'none';
+    document.getElementById('cat1').style.display = 'none';
+    document.getElementById('dog1').style.display = 'none';
+    document.getElementById('dog2').style.display = 'none';
+    document.getElementById('pcat3').style.display = 'none';
+    document.getElementById('pcat2').style.display = 'none';
+    document.getElementById('pcat1').style.display = 'none';
+    document.getElementById('pdog1').style.display = 'none';
+    document.getElementById('pdog2').style.display = 'none';
+  }
+
+  function show2() {
+
+    document.getElementById('cat3').style.display = 'block';
+    document.getElementById('pcat3').style.display = 'block';
+    document.getElementById('cat1').style.display = 'none';
+    document.getElementById('cat2').style.display = 'none';
+    document.getElementById('cat5').style.display = 'none';
+    document.getElementById('dog1').style.display = 'none';
+    document.getElementById('dog2').style.display = 'none';
+    document.getElementById('pcat1').style.display = 'none';
+    document.getElementById('pcat2').style.display = 'none';
+    document.getElementById('pcat5').style.display = 'none';
+    document.getElementById('pdog1').style.display = 'none';
+    document.getElementById('pdog2').style.display = 'none';
+
+  }
+
+  function show3() {
+
+    document.getElementById('cat2').style.display = 'block';
+    document.getElementById('pcat2').style.display = 'block';
+    document.getElementById('cat3').style.display = 'none';
+    document.getElementById('cat1').style.display = 'none';
+    document.getElementById('cat5').style.display = 'none';
+    document.getElementById('dog1').style.display = 'none';
+    document.getElementById('dog2').style.display = 'none';
+    document.getElementById('pcat3').style.display = 'none';
+    document.getElementById('pcat1').style.display = 'none';
+    document.getElementById('pcat5').style.display = 'none';
+    document.getElementById('pdog1').style.display = 'none';
+    document.getElementById('pdog2').style.display = 'none';
+
+  }
+</script>
+{% endblock %}

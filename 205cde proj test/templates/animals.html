@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>Animal</title>
+<style>
+  body :not(nav):not(footer) {
+    box-sizing: border-box;
+    margin: 5px;
+  }
+</style>
+{% endblock %}
+{% block body %}
+<legend>Animal Fund</legend><br>
+<table border="1" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Animal_id</th>
+      <th scope="col">Animal name</th>
+      <th scope="col">Years old</th>
+      <th scope="col">Disease</th>
+      <th scope="col">Total value raised</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  {% for result in results %}
+
+  <tr>
+    <td>{{result[0]}}</td>
+    <td>{{result[1]}}</td>
+    <td>{{result[2]}}</td>
+    <td>{{result[3]}}</td>
+    <td>{{result[4]}}</td>
+
+
+
+  </tr>
+
+
+  {% endfor %}
+</table>
+
+{% endblock %}

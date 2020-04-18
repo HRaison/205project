@@ -1,0 +1,140 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>Payment</title>
+
+<style>
+  body :not(nav):not(footer) {
+    box-sizing: border-box;
+    margin: 5px;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <div id=content1 style="text-align:center">
+    <h2>Payment</h2>
+  </div>
+</div>
+
+<div class="content-section">
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <fieldset class="form-group">
+      <div class="form-group">
+        {{ form.name.label(class="form-control-label") }}
+
+        {% if form.name.errors %}
+        {{ form.name(class="form-control form-control is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.name.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.name(class="form-control form-control") }}
+        {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form.credit_type.label(class="form-control-label") }}
+        {% if form.credit_type.errors %}
+        {{ form.credit_type(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.credit_type.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.credit_type(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form.credit_no.label(class="form-control-label") }}
+        {% if form.credit_no.errors %}
+        {{ form.credit_no(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.credit_no.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.credit_no(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form.expir_month.label(class="form-control-label") }}
+        {% if form.expir_month.errors %}
+        {{ form.expir_month(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.expir_month.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.expir_month(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form.expir_year.label(class="form-control-label") }}
+        {% if form.expir_year.errors %}
+        {{ form.expir_year(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.expir_year.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.expir_year(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form.cvv.label(class="form-control-label") }}
+        {% if form.cvv.errors %}
+        {{ form.cvv(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.cvv.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.cvv(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form.money.label(class="form-control-label") }}
+        {% if form.money.errors %}
+        {{ form.money(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.money.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.money(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form.animal_name.label(class="form-control-label") }}
+        {% if form.animal_name.errors %}
+        {{ form.animal_name(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.animal_name.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.animal_name(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+
+
+    </fieldset>
+    <div class="form-group">
+      {{ form.submit(class="btn btn-primary") }}
+    </div>
+
+  </form>
+</div>
+
+{% endblock %}

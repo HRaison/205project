@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>Add</title>
+<style>
+  body :not(nav):not(footer) {
+    box-sizing: border-box;
+    margin: 5px;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div id=content1 style="text-align:center">
+    <h2>Add Animal</h2>
+  </div>
+</div>
+
+
+<div class="content-section">
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <fieldset class="form-group">
+      <div class="form-group">
+        {{ form.animal_name.label(class="form-control-label") }}
+
+        {% if form.animal_name.errors %}
+        {{ form.animal_name(class="form-control form-control is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.animal_name.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.animal_name(class="form-control form-control") }}
+        {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form.years_old.label(class="form-control-label") }}
+        {% if form.years_old.errors %}
+        {{ form.body(class="form-control form-control is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.years_old.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.years_old(class="form-control form-control") }}
+        {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form.disease.label(class="form-control-label") }}
+        {% if form.disease.errors %}
+        {{ form.body(class="form-control form-control is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.disease.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.disease(class="form-control form-control") }}
+        {% endif %}
+      </div>
+
+    </fieldset>
+    <div class="form-group">
+      {{ form.submit(class="btn btn-primary") }}
+    </div>
+  </form>
+</div>
+
+
+
+{% endblock %}

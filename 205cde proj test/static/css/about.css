@@ -1,0 +1,21 @@
+carousel.carousel-item {
+  height: 300px;
+}
+
+.carousel.carousel-item img {
+  min-height: 300px;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%
+}
